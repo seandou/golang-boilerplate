@@ -1,0 +1,27 @@
+version: '3'
+services:
+  golang-boilerplate:
+    container_name: golang-boilerplate
+    image: seandou/alpine-go:v1.9
+    build: .
+    # restart: always
+    ports:
+      - "8080"
+    volumes:
+      - ./etc/bashrc:/home/www/.bashrc
+
+      - .gopath:/go
+      - .:/home/www/go/src/github.com/seandou/golang-boilerplate
+    tty: true
+    command: /bin/bash
+    working_dir: /home/www/go/src/github.com/seandou/golang-boilerplate
+    networks:
+      devops:
+        ipv4_address: 172.31.0.10
+    external_links:
+      - mysql:mysql
+      - redis:redis
+
+networks:
+  devops:
+    external: true
