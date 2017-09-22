@@ -8,8 +8,6 @@ docker-compose up -d
 npm run exec
 ```
 
-## Useful tools
+## Tools
 
-```
-
-```
+- [godep](https://github.com/tools/godep)
