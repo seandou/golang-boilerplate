@@ -16,7 +16,8 @@ docker run --rm --name $projectName -v /data/go-cache/$projectName:/go $baseTag 
 "
 
 task "Sync data to local"
-# excludes="--exclude='.git' --exclude='.gitignore'"
-rsync -azvPq --delete $excludes root@$remoteHost:/data/go-cache/$projectName/ .gopath
+rsync -azvPq --delete \
+    --exclude='.gitignore' \
+    root@$remoteHost:/data/go-cache/$projectName/ .gopath
 
 task "Done"
